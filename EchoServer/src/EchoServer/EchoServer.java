@@ -18,11 +18,13 @@ import static java.lang.System.out;
 /**
  *
  * @author Nikolaj
+ * This Class acts the server
  */
 public class EchoServer {
 
     private static Map<String,String> translate = new HashMap<>();
     
+    //A Map containing functions for transforming input, indexed by function name 
     private static Map<String,Function<String,String>> actions = new HashMap<>();
     
     public static void main(String[] args) throws IOException {
@@ -31,7 +33,8 @@ public class EchoServer {
         translate.put("fisk", "fish");
         translate.put("mand", "man");
         translate.put("kvinde", "woman");
-               
+        
+        //Add functions
         actions.put("UPPER", (String x) -> { return x.toUpperCase();});
         actions.put("LOWER", (String x) -> { return x.toLowerCase();});
         actions.put("REVERSE", (String x) -> { return new StringBuilder(x).reverse().toString();});
@@ -47,7 +50,8 @@ public class EchoServer {
     public void run() throws IOException {
         ServerSocket SSocket = new ServerSocket(PORT);
         out.println("Server Started.");
-                
+        
+        //Wait for clients to connect    
         while(true) {
             Socket currentSocket = SSocket.accept();
             clients.add(currentSocket);
