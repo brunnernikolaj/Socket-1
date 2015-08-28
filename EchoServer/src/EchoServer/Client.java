@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package EchoServer;
 
 import java.io.BufferedReader;
@@ -39,13 +35,15 @@ public class Client {
         
         PrintStream ps = new PrintStream(socket.getOutputStream());
         
+        //Read console input while input is not Exit
         String input = null;
         while (!(input = consoleBr.readLine()).equals("Exit")) {
             ps.println(input);
         }
+        
+        //Disconnect client from server
         ps.println("close");
         clt.interrupt();
         socket.close();
-        
     }
 }
