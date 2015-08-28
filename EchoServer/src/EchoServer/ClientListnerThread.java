@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author Nikolaj
+ * This Class is used to listen to output from the server
  */
 public class ClientListnerThread extends Thread{
     BufferedReader reader;
